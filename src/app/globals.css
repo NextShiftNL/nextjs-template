@@ -74,7 +74,8 @@
   }
 
   /* Lists */
-  ul, ol {
+  ul,
+  ol {
     @apply mb-3 sm:mb-4 pl-4;
   }
 

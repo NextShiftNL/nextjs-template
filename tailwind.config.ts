@@ -6,7 +6,6 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    // Add consistent breakpoints
     screens: {
       'xs': '360px',
       'sm': '640px',
@@ -15,7 +14,6 @@ export default {
       'xl': '1280px',
       '2xl': '1536px',
     },
-    // Add container configs
     container: {
       center: true,
       padding: {
