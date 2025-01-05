@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #64748b;
+  --secondary-foreground: #ffffff;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
+    --secondary: #94a3b8;
+    --secondary-foreground: #ffffff;
+    --muted: #1f2937;
+    --muted-foreground: #9ca3af;
+    --destructive: #f87171;
+    --destructive-foreground: #ffffff;
+  }
+}
+
+@layer base {
+  /* Headings */
+  h1 {
+    @apply text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 tracking-tighter leading-[1.1];
+  }
+  h2 {
+    @apply text-2xl sm:text-3xl font-semibold mb-3 sm:mb-4 tracking-tight leading-[1.2];
+  }
+  h3 {
+    @apply text-xl sm:text-2xl font-semibold mb-2 sm:mb-3 tracking-normal leading-[1.3];
+  }
+  h4 {
+    @apply text-lg sm:text-xl font-medium mb-2 tracking-normal leading-[1.4];
+  }
+  h5 {
+    @apply text-lg font-medium mb-2 tracking-normal leading-normal;
+  }
+  h6 {
+    @apply text-base font-medium mb-2 tracking-normal leading-normal;
+  }
+
+  /* Paragraphs */
+  p {
+    @apply text-base leading-relaxed tracking-normal mb-3 sm:mb-4 text-foreground;
+  }
+
+  /* Inline text elements */
+  span {
+    @apply text-base leading-normal tracking-normal;
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+
+  em {
+    @apply italic;
+  }
+
+  small {
+    @apply text-sm leading-normal;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    @apply mb-3 sm:mb-4 pl-4;
+  }
+
+  li {
+    @apply mb-1 leading-normal;
+  }
+
+  /* Links */
+  a {
+    @apply text-primary hover:underline;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    @apply pl-4 border-l-4 border-muted italic my-4;
+  }
+
+  /* Code */
+  code {
+    @apply font-mono text-sm bg-muted px-1 py-0.5 rounded;
+  }
+
+  /* Pre */
+  pre {
+    @apply font-mono text-sm bg-muted p-4 rounded-lg my-4 overflow-x-auto;
+  }
+
+  /* Responsive container padding */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer components {
+  /* Core components */
+  .btn {
+    @apply px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base rounded-md font-medium 
+           transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-primary-foreground focus:ring-primary;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary text-secondary-foreground focus:ring-secondary;
+  }
+
+  .input {
+    @apply px-3 py-1.5 sm:py-2 text-sm sm:text-base rounded-md border border-foreground 
+           bg-background focus:outline-none focus:ring-2 focus:ring-primary 
+           focus:border-transparent disabled:opacity-50 border-opacity-20;
+  }
+
+  .card {
+    @apply rounded-lg border border-muted p-3 sm:p-4 shadow-sm;
+  }
+
+  /* might need feedback states */
+  .input-error {
+    @apply border-destructive focus:ring-destructive;
+  }
+
+  /* Loading state if needed */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded;
+  }
+
+  /* Responsive grid, padding and gap */
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  }
+
+  .responsive-padding {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  .responsive-gap {
+    @apply gap-4 sm:gap-6 lg:gap-8;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .card {
+    @apply border-primary border-opacity-20;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: system-ui, sans-serif;
+  @apply min-h-screen-safe;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
