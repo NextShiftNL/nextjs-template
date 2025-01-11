@@ -1,3 +1,6 @@
+import FlipLink from "@/themes/components/FlipLink";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="min-h-screen responsive-padding">
@@ -29,8 +32,8 @@ export default function Home() {
 
               <pre>
                 {`function example() {
-                  return "This is a code block";
-                }`}
+    return "This is a code block";
+}`}
               </pre>
             </div>
           </div>
@@ -69,10 +72,69 @@ export default function Home() {
         <section className="space-y-8 sm:space-y-12">
           <h2>Components</h2>
           <div className="space-y-8 sm:space-y-12">
-            {/* Hover examples comes wil be here */}
-            <div>
-              
+            {/* Backgrounds */}
+            <div className="space-y-4">
+              <h3>Backgrounds</h3>
+              <div>
+                <Link href="/backgrounds">Backgrounds</Link>
+              </div>
             </div>
+            <div className="space-y-4">
+              <h3>Cursor</h3>
+              <div>
+                <Link href="/cursors">Cursors</Link>
+              </div>
+            </div>
+
+            {/* Hover examples comes wil be here */}
+            <div className="space-y-4">
+              <h3>Hover</h3>
+              <div className="flex gap-8 flex-wrap">
+                <FlipLink href="/">Hover</FlipLink>
+                <div className="group relative cursor-pointer">
+                  <span>Left to Right</span>
+                  <span className="hover-underline-left"></span>
+                </div>
+                <div className="group relative cursor-pointer">
+                  <span>Right to Left</span>
+                  <span className="hover-underline-right"></span>
+                </div>
+                <div className="group relative cursor-pointer">
+                  <span>Middle Out</span>
+                  <span className="hover-underline-middle"></span>
+                </div>
+                <span className="hover-zoom">Zoom in</span>
+
+                {/* New hover animations */}
+                <div className="transform transition-all hover:rotate-12 cursor-pointer">
+                  Rotate Hover
+                </div>
+                <div className="transform transition-all hover:-translate-y-2 cursor-pointer">
+                  Float Up
+                </div>
+                <div className="transform transition-all hover:scale-95 cursor-pointer">
+                  Shrink
+                </div>
+                <div className="animate-none hover:animate-bounce cursor-pointer">
+                  Bounce
+                </div>
+                <div className="animate-none hover:animate-pulse cursor-pointer">
+                  Pulse
+                </div>
+                <div className="animate-none hover:animate-ping cursor-pointer">
+                  Ping
+                </div>
+                <div className="transition-all hover:blur-sm cursor-pointer">
+                  Blur
+                </div>
+                <div className="group cursor-pointer">
+                  <span className="transition-all group-hover:text-primary group-hover:font-bold">
+                    Color & Weight
+                  </span>
+                </div>
+              </div>
+            </div>
+
             {/* Buttons */}
             <div className="space-y-4">
               <h3>Buttons</h3>
@@ -82,6 +144,14 @@ export default function Home() {
                 <button className="btn-primary" disabled>
                   Disabled
                 </button>
+                <button className="btn-magic">
+                  <span>Border Magic</span>
+                </button>
+                <button className="btn-slide">
+                  <span className="text-black">Slide hover</span>
+                </button>
+                <button className="btn-shadow">Shadow Hover</button>
+                <button className="btn-fill">Fill Hover</button>
               </div>
             </div>
 
