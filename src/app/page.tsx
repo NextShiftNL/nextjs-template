@@ -1,5 +1,4 @@
 import FlipLink from "@/themes/components/FlipLink";
-import Link from "next/link";
 import { TransitionLink } from "@/themes/components/PageTransition/PageTransitionWrapper-1";
 
 export default function Home() {
@@ -25,7 +24,7 @@ export default function Home() {
               </p>
 
               <blockquote>
-                This is a blockquote. It's useful for highlighting important
+                This is a blockquote. It&apos;s useful for highlighting important
                 quotes or messages within your content.
               </blockquote>
 
@@ -77,7 +76,7 @@ export default function Home() {
             <div className="space-y-4">
               <h3>Page Transition</h3>
               <div>
-                <Link href="/page-transition">Page Transition</Link>
+                {/* <Link href="/page-transition">Page Transition</Link> */}
               </div>
             </div>
             {/* Backgrounds */}
@@ -87,13 +86,6 @@ export default function Home() {
                 <TransitionLink href="/backgrounds"> Backgrounds</TransitionLink>
               </div>
             </div>
-            <div className="space-y-4">
-              <h3>Cursor</h3>
-              <div>
-                <Link href="/cursors">Cursors</Link>
-              </div>
-            </div>
-
             {/* Hover examples comes wil be here */}
             <div className="space-y-4">
               <h3>Hover</h3>
