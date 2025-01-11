@@ -1,5 +1,6 @@
 import FlipLink from "@/themes/components/FlipLink";
 import Link from "next/link";
+import { TransitionLink } from "@/themes/components/PageTransition/PageTransitionWrapper-1";
 
 export default function Home() {
   return (
@@ -72,11 +73,18 @@ export default function Home() {
         <section className="space-y-8 sm:space-y-12">
           <h2>Components</h2>
           <div className="space-y-8 sm:space-y-12">
+            {/* Page Transition */}
+            <div className="space-y-4">
+              <h3>Page Transition</h3>
+              <div>
+                <Link href="/page-transition">Page Transition</Link>
+              </div>
+            </div>
             {/* Backgrounds */}
             <div className="space-y-4">
               <h3>Backgrounds</h3>
               <div>
-                <Link href="/backgrounds">Backgrounds</Link>
+                <TransitionLink href="/backgrounds"> Backgrounds</TransitionLink>
               </div>
             </div>
             <div className="space-y-4">
@@ -90,7 +98,7 @@ export default function Home() {
             <div className="space-y-4">
               <h3>Hover</h3>
               <div className="flex gap-8 flex-wrap">
-                <FlipLink href="/">Hover</FlipLink>
+                <FlipLink href="/">Flip</FlipLink>
                 <div className="group relative cursor-pointer">
                   <span>Left to Right</span>
                   <span className="hover-underline-left"></span>
