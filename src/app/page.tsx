@@ -1,5 +1,10 @@
 import FlipLink from "@/themes/components/FlipLink";
 import { TransitionLink } from "@/themes/components/PageTransition/PageTransitionWrapper-1";
+import { FadeScaleLink } from "@/themes/components/PageTransition/PageTransitionWrapper-2";
+import { SlideLink } from "@/themes/components/PageTransition/PageTransitionWrapper-3";
+import { RotateScaleLink } from "@/themes/components/PageTransition/PageTransitionWrapper-4";
+import { SlideUpLink } from "@/themes/components/PageTransition/PageTransitionWrapper-5";
+import ScrollAnimation from "@/themes/components/gsap/ScrollAnimation";
 
 export default function Home() {
   return (
@@ -24,8 +29,8 @@ export default function Home() {
               </p>
 
               <blockquote>
-                This is a blockquote. It&apos;s useful for highlighting important
-                quotes or messages within your content.
+                This is a blockquote. It&apos;s useful for highlighting
+                important quotes or messages within your content.
               </blockquote>
 
               <code>This is how inline code looks</code>
@@ -71,22 +76,41 @@ export default function Home() {
         {/* Components */}
         <section className="space-y-8 sm:space-y-12">
           <h2>Components</h2>
+          
           <div className="space-y-8 sm:space-y-12">
             {/* Page Transition */}
             <div className="space-y-4">
               <h3>Page Transition</h3>
-              <div>
-                {/* <Link href="/page-transition">Page Transition</Link> */}
+              <div className="flex flex-wrap gap-4">
+                <TransitionLink href="/backgrounds" >
+                  Blur Transition
+                </TransitionLink>
+                <FadeScaleLink href="/backgrounds">
+                  Fade Scale Transition
+                </FadeScaleLink>
+                <SlideLink href="/backgrounds">
+                  Slide Transition
+                </SlideLink>
+                <RotateScaleLink href="/backgrounds">
+                  Rotate Scale Transition
+                </RotateScaleLink>
+                <SlideUpLink href="/backgrounds">
+                  Slide Up Transition
+                </SlideUpLink>
               </div>
             </div>
+
             {/* Backgrounds */}
             <div className="space-y-4">
               <h3>Backgrounds</h3>
               <div>
-                <TransitionLink href="/backgrounds"> Backgrounds</TransitionLink>
+                <TransitionLink href="/backgrounds">
+                  Backgrounds
+                </TransitionLink>
               </div>
             </div>
-            {/* Hover examples comes wil be here */}
+
+            {/* Hover examples */}
             <div className="space-y-4">
               <h3>Hover</h3>
               <div className="flex gap-8 flex-wrap">
@@ -135,7 +159,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Buttons */}
+            {/* Rest of the components */}
             <div className="space-y-4">
               <h3>Buttons</h3>
               <div className="flex flex-wrap responsive-gap">
@@ -155,7 +179,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Form Elements */}
             <div className="space-y-4">
               <h3>Form Elements</h3>
               <div className="max-w-sm space-y-4">
@@ -185,7 +208,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Cards */}
             <div className="space-y-4">
               <h3>Cards</h3>
               <div className="responsive-grid">
@@ -196,15 +218,117 @@ export default function Home() {
                     for grouping related information.
                   </p>
                 </div>
-                <div className="card">
-                  <h4>Loading State</h4>
+                
+                {/* Text Loading Card */}
+                <div className="card space-y-4">
+                  <h4>Text Loading</h4>
                   <div className="space-y-2">
                     <div className="skeleton h-4 w-3/4"></div>
                     <div className="skeleton h-4 w-1/2"></div>
+                    <div className="skeleton h-4 w-5/6"></div>
+                  </div>
+                </div>
+
+                {/* Profile Loading Card */}
+                <div className="card space-y-4">
+                  <h4>Profile Loading</h4>
+                  <div className="flex items-center space-x-4">
+                    <div className="skeleton h-12 w-12 rounded-full"></div>
+                    <div className="space-y-2">
+                      <div className="skeleton h-4 w-[120px]"></div>
+                      <div className="skeleton h-3 w-[80px]"></div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Image Card Loading */}
+                <div className="card space-y-4">
+                  <h4>Image Card Loading</h4>
+                  <div className="skeleton h-48 w-full rounded-lg"></div>
+                  <div className="space-y-2">
+                    <div className="skeleton h-4 w-2/3"></div>
+                    <div className="skeleton h-4 w-1/2"></div>
+                  </div>
+                </div>
+
+                {/* Table Loading */}
+                <div className="card">
+                  <h4>Table Loading</h4>
+                  <div className="space-y-3 mt-4">
+                    {[...Array(4)].map((_, i) => (
+                      <div key={i} className="flex space-x-4">
+                        <div className="skeleton h-4 w-1/4"></div>
+                        <div className="skeleton h-4 w-1/3"></div>
+                        <div className="skeleton h-4 w-1/4"></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Stats Loading */}
+                <div className="card">
+                  <h4>Stats Loading</h4>
+                  <div className="grid grid-cols-2 gap-4 mt-4">
+                    <div className="space-y-2">
+                      <div className="skeleton h-8 w-16"></div>
+                      <div className="skeleton h-4 w-20"></div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="skeleton h-8 w-16"></div>
+                      <div className="skeleton h-4 w-20"></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Add new GSAP Animation section at the bottom */}
+        <section className="space-y-8 sm:space-y-12">
+          <h2>GSAP Animations</h2>
+          <div className="space-y-16">
+            <ScrollAnimation animation="fadeIn">
+              <div className="card p-6">
+                <h3>Fade In Animation</h3>
+                <p>This element fades in when scrolled into view</p>
+              </div>
+            </ScrollAnimation>
+
+            <ScrollAnimation animation="slideUp">
+              <div className="card p-6">
+                <h3>Slide Up Animation</h3>
+                <p>This element slides up when scrolled into view</p>
+              </div>
+            </ScrollAnimation>
+
+            <ScrollAnimation animation="scaleIn">
+              <div className="card p-6">
+                <h3>Scale In Animation</h3>
+                <p>This element scales in when scrolled into view</p>
+              </div>
+            </ScrollAnimation>
+
+            <ScrollAnimation animation="rotateIn">
+              <div className="card p-6">
+                <h3>Rotate In Animation</h3>
+                <p>This element rotates in when scrolled into view</p>
+              </div>
+            </ScrollAnimation>
+
+            <ScrollAnimation animation="stagger">
+              <div className="card p-6">
+                <h3>Stagger Animation</h3>
+                <div className="space-y-4">
+                  <p>These elements stagger in when scrolled into view</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="bg-primary p-4 rounded">Item 1</div>
+                    <div className="bg-primary p-4 rounded">Item 2</div>
+                    <div className="bg-primary p-4 rounded">Item 3</div>
+                  </div>
+                </div>
+              </div>
+            </ScrollAnimation>
           </div>
         </section>
       </div>
