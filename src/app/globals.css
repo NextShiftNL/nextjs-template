@@ -15,6 +15,35 @@
   --destructive-foreground: #ffffff;
 }
 
+.page-transition {
+  opacity: 0;
+  background: black;
+  transform: translateY(40px);
+  filter: blur(12px);
+}
+
+.page-transition-fade-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 500ms ease-in-out;
+}
+
+.page-transition-slide {
+  transform: translateX(100%);
+  transition: transform 500ms ease-in-out;
+}
+
+.page-transition-rotate-scale {
+  opacity: 0;
+  transform: rotate(10deg) scale(0.95);
+  transition: all 500ms ease-in-out;
+}
+
+.page-transition-slide-up {
+  transform: translateY(100%);
+  transition: transform 500ms ease-in-out;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -107,6 +136,24 @@
   .container {
     @apply px-4 sm:px-6 lg:px-8;
   }
+
+  /* Hover-underline */
+  .hover-underline-left {
+    @apply absolute -bottom-1 left-0 h-[1px] w-0 bg-foreground transition-all duration-300 group-hover:w-full;
+  }
+
+  .hover-underline-right {
+    @apply absolute -bottom-1 right-0 h-[1px] w-0 bg-foreground transition-all duration-300 group-hover:w-full;
+  }
+
+  .hover-underline-middle {
+    @apply absolute -bottom-1 left-1/2 h-[1px] w-0 bg-foreground transition-all duration-300 group-hover:w-full group-hover:left-0;
+  }
+
+  /* Hover zoom effect */
+  .hover-zoom {
+    @apply transition-all duration-300 hover:scale-110 cursor-pointer;
+  }
 }
 
 @layer components {
@@ -156,6 +203,59 @@
   .responsive-gap {
     @apply gap-4 sm:gap-6 lg:gap-8;
   }
+
+  .btn-magic {
+    @apply relative inline-flex h-12 overflow-hidden rounded-full p-[1px] 
+           focus:outline-none focus:ring-2 focus:ring-slate-400 
+           focus:ring-offset-2 focus:ring-offset-slate-50;
+  }
+
+  .btn-magic::before {
+    content: '';
+    @apply absolute inset-[-1000%] animate-[spin_2s_linear_infinite] 
+           bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)];
+  }
+
+  .btn-magic span {
+    @apply inline-flex h-full w-full cursor-pointer items-center 
+           justify-center rounded-full bg-slate-950 px-3 py-1 
+           text-sm font-medium text-white backdrop-blur-3xl;
+  }
+
+  .btn-slide {
+    @apply px-8 py-2 border border-foreground bg-transparent relative
+           transition duration-200;
+  }
+
+  .btn-slide::before {
+    content: '';
+    @apply absolute -bottom-2 -right-2 bg-primary h-full w-full -z-10 
+           transition-all duration-200;
+  }
+
+  /* Add hover states separately */
+  .btn-slide:hover::before {
+    @apply bottom-0 right-0;
+  }
+
+  .btn-slide span {
+    @apply relative text-foreground;
+  }
+
+  .btn-shadow {
+    @apply px-4 py-2 bg-background border border-foreground
+           transition-all duration-200 hover:shadow-[4px_4px_0px_0px] 
+           hover:shadow-foreground hover:-translate-x-[2px] 
+           hover:-translate-y-[2px];
+  }
+
+  .btn-fill {
+    @apply px-4 py-2 border border-foreground text-foreground
+           relative z-0 overflow-hidden transition-colors duration-200
+           before:absolute before:inset-0 before:-z-10 before:bg-foreground
+           before:translate-y-full before:transition-transform before:duration-200
+           hover:text-background hover:before:translate-y-0;
+  }
 }
 
 /* Dark mode */
@@ -174,5 +274,8 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
+  transition-property: opacity, transform, filter, background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
 }
 
